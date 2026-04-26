@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #F4EFE6;
+  --paper-deep: #ECE5D6;
+  --paper-warm: #E8DFCC;
+  --ink: #0D2A35;
+  --teal: #1A4856;
+  --teal-deep: #0F3340;
+  --teal-soft: #2C6478;
+  --teal-pale: #BFD2D8;
+  --signal: #D8553A;
+  --signal-soft: #E58A6F;
+  --rule: rgba(13, 42, 53, 0.16);
+  --rule-soft: rgba(13, 42, 53, 0.08);
+  --muted: #6B7C82;
+  --on-deep: #F4EFE6;
+  --on-deep-mute: rgba(244, 239, 230, 0.60);
+
+  --radius-pill: 999px;
+  --radius-lg: 14px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+
+  --motion-fast: 160ms;
+  --motion-base: 250ms;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-paper text-ink;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .mono-tag {
+    @apply font-mono;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
