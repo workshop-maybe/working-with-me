@@ -19,7 +19,7 @@
   --on-deep: #F4EFE6;
   --on-deep-mute: rgba(244, 239, 230, 0.60);
 
-  --radius-pill: 999px;
+  --pill: 999px;
   --radius-lg: 14px;
   --radius-md: 12px;
   --radius-sm: 8px;
@@ -27,11 +27,22 @@
 
   --motion-fast: 160ms;
   --motion-base: 250ms;
+
+  --font-sans: var(--font-geist, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif);
+  --font-serif: var(--font-newsreader, 'Iowan Old Style', Georgia, serif);
+  --font-mono: var(--font-plex, 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 @layer base {
   body {
-    @apply font-sans bg-paper text-ink;
+    background: var(--paper);
+    color: var(--ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -44,7 +55,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--teal);
+    outline: 2px solid var(--ink);
     outline-offset: 2px;
   }
 }
