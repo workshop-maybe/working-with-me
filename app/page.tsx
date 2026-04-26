@@ -1,7 +1,3 @@
 export default function Page() {
-  return (
-    <main className="p-8">
-      <h1>Working with Me</h1>
-    </main>
-  );
+  return <main className="container mx-auto p-14">Working with Me</main>;
 }
