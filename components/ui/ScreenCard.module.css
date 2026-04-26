@@ -1,0 +1,35 @@
+.root {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.top {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crumb {
+  font: 500 12px var(--font-sans);
+  color: var(--muted);
+  letter-spacing: -0.005em;
+}
+
+.crumb b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.badge {
+  font: 500 11px var(--font-mono);
+  color: var(--teal);
+  letter-spacing: -0.005em;
+}
+
+.body {
+  padding: 22px 24px;
+}
