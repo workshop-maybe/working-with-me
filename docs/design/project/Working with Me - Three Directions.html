@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Working with Me — Three Directions</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/base.css?v=3">
+<link rel="stylesheet" href="styles/v1.css?v=3">
+<link rel="stylesheet" href="styles/v2.css?v=3">
+<link rel="stylesheet" href="styles/v3.css?v=3">
+
+<style>
+  /* artboard scoping — keep each variation's bg from leaking */
+  .artboard-scope {
+    width: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="brand-mark.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="v1.jsx"></script>
+<script type="text/babel" src="v2.jsx"></script>
+<script type="text/babel" src="v3.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "primary": "#2E4F6B",
+  "signal": "#E0A341",
+  "ctaVerb": "Post an Assignment",
+  "showAndamioPill": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // apply tweaks live
+  React.useEffect(() => {
+    const r = document.documentElement.style;
+    r.setProperty("--teal",   t.primary);
+    r.setProperty("--signal", t.signal);
+    // tint the soft variants alongside
+    r.setProperty("--signal-soft", t.signal + "AA");
+    // andamio pill toggle
+    const id = "andamio-pill-style";
+    let st = document.getElementById(id);
+    if (!st) { st = document.createElement("style"); st.id = id; document.head.appendChild(st); }
+    st.textContent = t.showAndamioPill ? "" : ".sf-brand .built { display: none !important; }";
+    // CTA verb — replace text on every "Post an Assignment" instance
+    document.querySelectorAll("[data-cta-verb]").forEach((el) => { el.textContent = t.ctaVerb; });
+  }, [t]);
+
+  return (
+    <>
+      <DesignCanvas>
+        <DCSection id="working-with-me" title="Working with Me — three directions"
+          subtitle="Multi-tenant network. Anyone posts. Anyone commits. Connections follow.">
+          <DCArtboard id="v1" label="V1 · Signal field" width={1440} height={4400}>
+            <div className="artboard-scope"><V1 /></div>
+          </DCArtboard>
+          <DCArtboard id="v2" label="V2 · Index card stack" width={1440} height={4400}>
+            <div className="artboard-scope"><V2 /></div>
+          </DCArtboard>
+          <DCArtboard id="v3" label="V3 · Live ticker" width={1440} height={4400}>
+            <div className="artboard-scope"><V3 /></div>
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Brand color" />
+        <TweakColor label="Primary teal" value={t.primary} onChange={(v) => setTweak("primary", v)} />
+        <TweakColor label="Signal coral" value={t.signal}  onChange={(v) => setTweak("signal", v)} />
+
+        <TweakSection label="Color presets" />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 6 }}>
+          {[
+            { p: "#1A4856", s: "#D8553A", n: "Default" },
+            { p: "#1F4E36", s: "#D67A2C", n: "Forest" },
+            { p: "#3B2E5C", s: "#D04E5C", n: "Plum" },
+            { p: "#2E4F6B", s: "#E0A341", n: "Steel" },
+            { p: "#5C3A22", s: "#9C4A3A", n: "Earth" },
+          ].map((p) => (
+            <button key={p.n} title={p.n}
+              onClick={() => setTweak({ primary: p.p, signal: p.s })}
+              style={{
+                aspectRatio: "1", borderRadius: 6, border: "1px solid rgba(0,0,0,.1)",
+                background: `linear-gradient(135deg, ${p.p} 50%, ${p.s} 50%)`, cursor: "pointer",
+              }} />
+          ))}
+        </div>
+
+        <TweakSection label="Copy" />
+        <TweakText label="CTA verb" value={t.ctaVerb} onChange={(v) => setTweak("ctaVerb", v)} />
+
+        <TweakSection label="Footer" />
+        <TweakToggle label='"Built on Andamio" pill' value={t.showAndamioPill} onChange={(v) => setTweak("showAndamioPill", v)} />
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

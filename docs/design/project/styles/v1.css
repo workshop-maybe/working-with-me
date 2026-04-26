@@ -1,0 +1,376 @@
+/* ============================================================
+   V1 — SIGNAL FIELD
+   Warm cream field. The hero IS a field of broadcasting beacons.
+   Editorial-warm voice. Big serif headline.
+   Each Assignment is a beacon; the credential is the artifact.
+   ============================================================ */
+
+.v1 { background: var(--paper); }
+
+/* hero — full bleed, signal field on the right */
+.v1-hero { padding: 80px 0 120px; }
+.v1-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 80px; align-items: center;
+}
+.v1-hero h1 {
+  margin: 22px 0 0;
+  font: 400 clamp(3rem, 6.5vw, 6.75rem)/0.98 var(--serif);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.v1-hero h1 em {
+  font-style: italic; color: var(--teal);
+}
+.v1-hero h1 .signal {
+  color: var(--signal); font-style: italic;
+}
+.v1-hero-lede {
+  margin-top: 28px; max-width: 50ch;
+  font: 400 19px/1.55 var(--sans);
+  color: var(--teal-soft); letter-spacing: -0.005em;
+}
+.v1-hero-lede b { color: var(--ink); font-weight: 500; }
+.v1-hero-ctas { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* the field: a grid of small "beacon" cards radiating */
+.v1-field {
+  position: relative;
+  height: 520px;
+}
+.v1-beacon {
+  position: absolute;
+  background: var(--paper-deep);
+  border: 1.25px solid var(--ink);
+  border-radius: 12px;
+  padding: 14px 16px;
+  width: 220px;
+  font: 400 12px/1.5 var(--sans);
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.v1-beacon .av {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
+  font: 500 12px var(--sans);
+}
+.v1-beacon .av .avatar { width: 22px; height: 22px; font-size: 9px; border-radius: 50%; }
+.v1-beacon h5 {
+  margin: 0;
+  font: 400 13px/1.3 var(--serif);
+  font-style: italic;
+  color: var(--ink);
+}
+.v1-beacon .wave {
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--teal-soft);
+}
+.v1-beacon.b1 { top: 0;    right: 0;     transform: rotate(1deg); }
+.v1-beacon.b2 { top: 130px; right: 230px; transform: rotate(-2deg); }
+.v1-beacon.b3 { top: 90px;  right: -20px; transform: rotate(2deg); width: 200px; }
+.v1-beacon.b4 { top: 270px; right: 60px;  transform: rotate(-1deg); }
+.v1-beacon.b5 { top: 380px; right: 200px; transform: rotate(1.5deg); }
+
+/* signal rays */
+.v1-field svg.rays { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* ——— sample profile screen ——————————————————————————— */
+.v1-screens {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px; align-items: start;
+}
+.v1-browser {
+  background: var(--paper-deep);
+  border: 1.25px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.v1-browser .top {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 10px;
+}
+.v1-browser .top .dots { display: flex; gap: 5px; }
+.v1-browser .top .dots span {
+  width: 9px; height: 9px; background: var(--rule);
+  border-radius: 50%;
+}
+.v1-browser .url {
+  flex-grow: 1;
+  padding: 6px 12px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font: 400 12px var(--mono);
+  color: var(--muted);
+  letter-spacing: -0.005em;
+}
+.v1-browser .url b { color: var(--ink); font-weight: 500; }
+.v1-browser .body {
+  padding: 36px 40px;
+}
+.v1-profile-head {
+  display: flex; align-items: center; gap: 16px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.v1-profile-head .who {
+  font: 500 18px var(--sans); letter-spacing: -0.015em;
+}
+.v1-profile-head .who small {
+  display: block;
+  font: 400 13px var(--sans);
+  color: var(--muted);
+}
+.v1-profile-head .badge {
+  margin-left: auto;
+  font: 500 11px var(--sans);
+  color: var(--teal);
+  padding: 5px 10px;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+}
+.v1-profile-body { margin-top: 28px; }
+.v1-profile-body .label-row {
+  font: 500 11px var(--sans);
+  color: var(--muted); letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.v1-profile-body h3 {
+  margin: 0;
+  font: 400 30px/1.15 var(--serif);
+  letter-spacing: -0.02em;
+  color: var(--ink); text-wrap: balance;
+}
+.v1-profile-body p {
+  margin: 14px 0 0;
+  font: 400 16px/1.65 var(--sans);
+  color: var(--ink); letter-spacing: -0.005em;
+}
+.v1-profile-body .pref {
+  margin-top: 22px; padding: 14px 16px;
+  background: var(--paper);
+  border-left: 3px solid var(--signal);
+  border-radius: 6px;
+  font: 400 14px/1.55 var(--sans);
+  color: var(--ink);
+}
+.v1-profile-body .pref b {
+  display: block;
+  font: 500 11px var(--sans);
+  color: var(--muted); letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.v1-profile-body .more-cta {
+  margin-top: 24px;
+  display: flex; gap: 12px; align-items: center;
+  padding: 14px 16px;
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  border-radius: 8px;
+  font: 400 13px var(--sans);
+  color: var(--muted);
+}
+
+/* commitment form (right side) */
+.v1-commit {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+}
+.v1-commit .label { color: var(--signal-soft); }
+.v1-commit h4 {
+  margin: 14px 0 8px;
+  font: 400 24px/1.2 var(--serif);
+  font-style: italic;
+  color: var(--paper);
+}
+.v1-commit > p {
+  font: 400 14px/1.55 var(--sans);
+  color: var(--on-deep-mute);
+  margin: 0;
+}
+.v1-commit .field {
+  margin-top: 18px;
+}
+.v1-commit .field label {
+  display: block;
+  font: 500 11px var(--sans);
+  color: rgba(244, 239, 230, 0.65);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+.v1-commit .field .input {
+  background: rgba(244, 239, 230, 0.06);
+  border: 1px solid rgba(244, 239, 230, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font: 400 14px/1.55 var(--sans);
+  color: var(--paper);
+  min-height: 16px;
+}
+.v1-commit .field .input.large { min-height: 64px; }
+.v1-commit .field .input.placeholder {
+  color: rgba(244, 239, 230, 0.4); font-style: italic;
+}
+.v1-commit .interest {
+  margin-top: 18px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: rgba(216, 85, 58, 0.12);
+  border: 1px solid var(--signal);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.v1-commit .interest .check {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--signal);
+  border-radius: 50%;
+  background: var(--signal);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--paper);
+  flex-shrink: 0;
+}
+.v1-commit .interest .check svg { width: 11px; height: 11px; }
+.v1-commit .interest .l {
+  font: 500 13px var(--sans);
+  color: var(--paper);
+}
+.v1-commit .interest .l small {
+  display: block;
+  font: 400 11px var(--sans);
+  color: var(--on-deep-mute);
+}
+.v1-commit .actions {
+  margin-top: 18px;
+  display: flex; justify-content: flex-end;
+}
+
+/* ——— What unlocks (the credential + gated more) ——————— */
+.v1-unlocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 64px; align-items: center;
+}
+.v1-unlock-side {
+  display: flex; align-items: center; justify-content: center;
+}
+.v1-unlock-detail {
+  display: grid; gap: 24px;
+}
+.v1-unlock-detail .point {
+  display: grid; grid-template-columns: 28px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+}
+.v1-unlock-detail .point:first-child { border-top: none; padding-top: 0; }
+.v1-unlock-detail .point .ic {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper-deep);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+}
+.v1-unlock-detail .point h4 {
+  margin: 0;
+  font: 500 17px/1.25 var(--sans);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.v1-unlock-detail .point p {
+  margin: 6px 0 0;
+  font: 400 14px/1.55 var(--sans);
+  color: var(--muted); letter-spacing: -0.005em;
+  max-width: 50ch;
+}
+
+/* ——— Inbox + Network screens (deep section) ——————————— */
+.v1-screens-deep {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.v1-screen-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.v1-screen-card .top {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.v1-screen-card .top .crumb {
+  font: 500 12px var(--sans); color: var(--muted); letter-spacing: -0.005em;
+}
+.v1-screen-card .top .crumb b { color: var(--ink); font-weight: 500; }
+.v1-screen-card .top .badge {
+  font: 500 11px var(--mono); color: var(--teal); letter-spacing: -0.005em;
+}
+.v1-screen-card .body { padding: 22px 24px; }
+
+.v1-inbox-row {
+  display: grid; grid-template-columns: 32px 1fr auto;
+  gap: 14px; padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  align-items: start;
+}
+.v1-inbox-row:first-child { border-top: none; padding-top: 0; }
+.v1-inbox-row .meta {
+  font: 500 13px var(--sans); letter-spacing: -0.005em;
+}
+.v1-inbox-row .meta small {
+  display: block;
+  font: 400 12px var(--mono); color: var(--muted);
+}
+.v1-inbox-row .msg {
+  margin-top: 6px;
+  font: 400 13px/1.5 var(--sans); color: var(--muted);
+}
+.v1-inbox-row .ix {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px;
+  font: 500 11px var(--sans); color: var(--signal);
+}
+.v1-inbox-row .acts { display: flex; gap: 6px; }
+.v1-inbox-row .acts button {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--rule);
+}
+.v1-inbox-row .acts .ok { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.v1-inbox-row .acts .no { color: var(--muted); }
+
+.v1-network-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.v1-network-cell {
+  display: grid; gap: 8px;
+  padding: 14px;
+  background: var(--paper-deep);
+  border-radius: 10px;
+}
+.v1-network-cell .pair {
+  display: flex; align-items: center; gap: -8px;
+}
+.v1-network-cell .pair .avatar {
+  border: 2px solid var(--paper-deep);
+}
+.v1-network-cell .pair .avatar:nth-child(2) { margin-left: -10px; }
+.v1-network-cell .ttl {
+  font: 500 13px var(--sans); letter-spacing: -0.005em;
+}
+.v1-network-cell .ttl em { font-style: italic; color: var(--muted); font-weight: 400; }
+.v1-network-cell .when {
+  font: 400 11px var(--mono); color: var(--muted);
+}

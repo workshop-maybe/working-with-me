@@ -1,0 +1,305 @@
+/* =========================================================================
+   Andamio Design System — Colors & Type
+   Source: src/styles/globals.css + src/ui/landing/V2Landing/* (Andamio-Platform/landing-page-and-blog)
+   Values lifted 1:1 from Tailwind CSS variables used across the V2 landing page.
+   ========================================================================= */
+
+/* ---------- Font faces (self-hosted) ---------- */
+@font-face {
+  font-family: "Beckman";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/bennBeckmanMedium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Beckman";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./fonts/bennBeckmanLight.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Beckman";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/bennBeckmanBook.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Beckman";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/bennBeckmanBlack.woff2") format("woff2");
+}
+@font-face {
+  font-family: "WorkSans";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/WorkSans-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "LibreFranklin";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/LibreFranklin-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inconsolata";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/Inconsolata-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  /* ---------- Color tokens (light, default) ---------- */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* Primary = Andamio orange (brand accent, used for CTAs, links, focus) */
+  --primary: oklch(0.669 0.199 38.581);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary = deep teal/navy */
+  --secondary: oklch(0.387 0.134 250.505);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.985 0.002 106.423);
+  --muted-foreground: oklch(0.478 0.029 255.508);
+  --accent: oklch(0.988 0.008 79.439);
+  --accent-foreground: oklch(0.145 0 0);
+
+  --destructive: oklch(0.608 0.227 27.325);
+  --border: oklch(0.922 0.003 106.423);
+  --input: oklch(0.922 0.003 106.423);
+  --ring: oklch(0.669 0.199 38.581);
+
+  /* Chart palette — draws from the same orange/teal family */
+  --chart-1: oklch(0.719 0.140 38.581);
+  --chart-2: oklch(0.605 0.155 250.505);
+  --chart-3: oklch(0.627 0.106 181.764);
+  --chart-4: oklch(0.669 0.199 38.581);
+  --chart-5: oklch(0.387 0.134 250.505);
+
+  /* Semantic */
+  --warning: hsl(30 90% 55%);
+  --warning-foreground: hsl(40 95% 95%);
+  --success: hsl(140 65% 30%);
+  --success-foreground: hsl(140 65% 90%);
+
+  /* Editor / code block accents (used in V2CodeSection) */
+  --editor-blue: hsl(200 70% 35%);
+  --editor-green: hsl(140 65% 35%);
+  --editor-orange: hsl(15 80% 55%);
+  --editor-yellow: hsl(40 85% 45%);
+
+  /* Code highlighting inside the terminal card on the homepage */
+  --code-comment: #6e7681;
+  --code-keyword: #ff7b72;
+  --code-fn:      #79c0ff;
+  --code-string:  #a5d6ff;
+  --code-ok:      #7ee787;
+
+  /* Surfaces */
+  --surface-subtle: oklch(0.97 0.004 106.423);
+  --surface-dark: #0d1117;           /* near-black GitHub-ish for dark sections */
+  --surface-dark-elevated: #161b22;  /* elevated cards on dark */
+
+  /* Radii — tightened Apr 2026. Andamio is scaffolding; keep edges closer to 90°. */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius:    4px;   /* default */
+  --radius-lg: 6px;   /* reserved for large surface cards only */
+
+  /* Shadow system — bolder, tangible. Use sparingly. */
+  --shadow-sm:  0 1px 0 rgb(0 0 0 / 0.06), 0 2px 4px rgb(0 0 0 / 0.04);
+  --shadow-md:  0 2px 0 rgb(0 0 0 / 0.08), 0 8px 16px -4px rgb(0 0 0 / 0.12);
+  --shadow-lg:  0 4px 0 rgb(0 0 0 / 0.10), 0 16px 32px -8px rgb(0 0 0 / 0.18);
+  --shadow-press: inset 0 2px 0 rgb(0 0 0 / 0.12); /* active/press */
+
+  /* ---------- Typography families ----------
+     UPDATE (Apr 2026): switched off Inter. New pairing:
+       • Geist       — UI/body/headlines (current, geometric-grotesque, Vercel-grade)
+       • Instrument Serif — editorial display accent (italic pull-quotes, hero words)
+       • JetBrains Mono — code
+     Flag: Geist + Instrument Serif + JetBrains Mono are on Google Fonts.
+     Beckman / WorkSans / LibreFranklin / Inconsolata from the original landing
+     page are kept as aliases in case legacy surfaces still reference them.
+  */
+  --font-sans:    "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
+  --font-mono:    "JetBrains Mono", "Inconsolata", ui-monospace, monospace;
+  --font-beckman: "Beckman", "Geist", ui-sans-serif, system-ui; /* marketing/flyer display */
+  --font-libre:   "LibreFranklin", "Geist", system-ui, sans-serif;
+
+  /* Semantic type roles (used by h1, h2, .eyebrow, .code, etc.) */
+  --h1-family: var(--font-display);
+  --h1-weight: 600; /* Geist Semibold — cleaner than 800 Inter */
+  --h1-size: clamp(3rem, 6vw + 1rem, 7.5rem);
+  --h1-leading: 1.02;
+  --h1-tracking: -0.035em;
+
+  --h2-family: var(--font-display);
+  --h2-weight: 500;
+  --h2-size: clamp(1.875rem, 2.4vw + 1rem, 3rem);
+  --h2-leading: 1.08;
+  --h2-tracking: -0.025em;
+
+  --h3-family: var(--font-display);
+  --h3-weight: 500;
+  --h3-size: 1.5rem;
+  --h3-leading: 1.25;
+  --h3-tracking: -0.015em;
+
+  --body-family: var(--font-sans);
+  --body-weight: 400;
+  --body-size: 1rem;
+  --body-leading: 1.625; /* Tailwind `leading-relaxed` */
+
+  --lead-family: var(--font-sans);
+  --lead-size: 1.125rem; /* 18px */
+  --lead-leading: 1.6;
+
+  --eyebrow-family: var(--font-sans);
+  --eyebrow-weight: 600;
+  --eyebrow-size: 0.75rem;
+  --eyebrow-tracking: 0.18em;
+  --eyebrow-transform: uppercase;
+
+  --code-family: var(--font-mono);
+  --code-size: 0.875rem;
+  --code-leading: 1.6;
+}
+
+.dark, [data-theme="dark"] {
+  --background: oklch(0.188 0.013 257.128);
+  --foreground: oklch(0.922 0.003 106.423);
+  --card: oklch(0.241 0.018 257.128);
+  --card-foreground: oklch(0.922 0.003 106.423);
+  --popover: oklch(0.241 0.018 257.128);
+  --popover-foreground: oklch(0.922 0.003 106.423);
+  --primary: oklch(0.719 0.174 38.581);
+  --primary-foreground: oklch(0.188 0.013 257.128);
+  --secondary: oklch(0.605 0.155 250.505);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.241 0.018 257.128);
+  --muted-foreground: oklch(0.717 0.014 257.128);
+  --accent: oklch(0.338 0.024 257.128);
+  --accent-foreground: oklch(0.922 0.003 106.423);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.338 0.024 257.128);
+  --input: oklch(0.338 0.024 257.128);
+  --ring: oklch(0.719 0.174 38.581);
+  --warning: hsl(10 64% 55%);
+  --warning-foreground: hsl(48 96% 89%);
+  --success: hsl(136 61% 67%);
+  --success-foreground: hsl(136 61% 15%);
+  --surface-subtle: oklch(0.215 0.015 257.128);
+}
+
+/* ---------- Semantic base element styles ---------- */
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--body-family);
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: var(--h1-family);
+  font-weight: var(--h1-weight);
+  font-size: var(--h1-size);
+  line-height: var(--h1-leading);
+  letter-spacing: var(--h1-tracking);
+  color: var(--foreground);
+  margin: 0;
+}
+h2 {
+  font-family: var(--h2-family);
+  font-weight: var(--h2-weight);
+  font-size: var(--h2-size);
+  line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking);
+  color: var(--foreground);
+  margin: 0;
+}
+h3 {
+  font-family: var(--h3-family);
+  font-weight: var(--h3-weight);
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  color: var(--foreground);
+  margin: 0;
+}
+p { margin: 0; }
+
+.eyebrow {
+  font-family: var(--eyebrow-family);
+  font-weight: var(--eyebrow-weight);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: var(--eyebrow-transform);
+  color: var(--muted-foreground);
+}
+.lead {
+  font-size: var(--lead-size);
+  line-height: var(--lead-leading);
+  color: var(--muted-foreground);
+}
+.mono, code, pre {
+  font-family: var(--code-family);
+  font-size: var(--code-size);
+  line-height: var(--code-leading);
+}
+
+/* Primary action button — matches V2HeroSection CTA */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 160ms ease, box-shadow 160ms ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: color-mix(in oklab, var(--primary) 90%, black); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background 160ms ease, border-color 160ms ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-secondary:hover { background: var(--muted); }
+
+a.link-inline {
+  color: var(--primary);
+  text-decoration: none;
+  text-underline-offset: 4px;
+  font-weight: 500;
+}
+a.link-inline:hover { text-decoration: underline; }
