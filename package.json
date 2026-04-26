@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate:types": "swagger-typescript-api generate -p ${ANDAMIO_GATEWAY_URL}/api/v2/docs/doc.json -o ./lib/gateway -n types.generated.ts --no-client || node scripts/fallback-types.mjs"
   },
   "dependencies": {
     "next": "15.5.15",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "server-only": "^0.0.1",
+    "zod": "^3"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
@@ -22,10 +25,11 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "15.5.15",
     "postcss": "^8.4.38",
+    "swagger-typescript-api": "^13",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.6"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.33.2",
   "engines": {
     "node": ">=20"
   }
