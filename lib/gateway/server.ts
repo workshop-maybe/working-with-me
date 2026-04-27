@@ -1,6 +1,5 @@
 import 'server-only';
 
-import { env } from '@/lib/env';
 import { isAllowed } from '@/lib/gateway/allowlist';
 
 export type GatewayFetchInit = {
@@ -20,6 +19,10 @@ export async function gatewayFetch(
   if (!isAllowed(method, pathOnly)) {
     return new Response(null, { status: 404 });
   }
+
+  // Lazy-load env so its zod parse runs at request time, not at build's
+  // "Collecting page data" step (which evaluates the route module).
+  const { env } = await import('@/lib/env');
 
   const headers = new Headers(init?.headers);
   headers.set('X-API-Key', env.ANDAMIO_API_KEY);
