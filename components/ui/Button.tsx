@@ -8,9 +8,14 @@ export type ButtonSize = "sm" | "default";
  *
  * Usage notes:
  * - Variant names map to the `.btn-pri | .btn-out | .btn-ghost | .btn-cream |
- *   .btn-cream-out` class suffixes mirrored from the design source. Hover and
- *   `:focus-visible` styling lives in the foundation-owned globals.css; this
+ *   .btn-cream-out` class suffixes mirrored from the design source. This
  *   component emits the matching className suffixes so foundation CSS resolves.
+ * - Focus ring contract: the `:focus-visible` outline is owned by the
+ *   foundation file `app/globals.css` — specifically the generic
+ *   `:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }`
+ *   rule in the base layer, which applies to the rendered `<button>` element.
+ *   No `.btn`-scoped focus selector exists; edit `app/globals.css` to change
+ *   the focus ring, never this component.
  * - Button is server-renderable: do NOT promote it to a Client Component.
  *   `onClick` forwards as a normal HTML attribute and only fires when the
  *   consuming component is itself a Client Component (the closure is created

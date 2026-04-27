@@ -64,7 +64,7 @@ export function Label({
       className={classes}
       style={{ ...baseStyle, color: variantColor[variant] }}
     >
-      {dot ? <span className="dot" style={dotStyle(variant)} /> : null}
+      {dot ? <span className="dot" style={dotStyle(variant)} aria-hidden="true" /> : null}
       {children}
     </span>
   );
