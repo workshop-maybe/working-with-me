@@ -28,9 +28,9 @@
   --motion-fast: 160ms;
   --motion-base: 250ms;
 
-  --font-sans: var(--font-geist, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif);
-  --font-serif: var(--font-newsreader, 'Iowan Old Style', Georgia, serif);
-  --font-mono: var(--font-plex, 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+  --section: 120px;
+  --container-pad: 0 56px;
+  --container-max: 1240px;
 }
 
 *,
@@ -66,6 +66,10 @@
     font-size: 11px;
     letter-spacing: 0.02em;
     color: var(--muted);
+  }
+
+  .hairline {
+    border-color: var(--rule);
   }
 }
 

@@ -32,6 +32,10 @@ const config: Config = {
       },
       borderRadius: {
         pill: '999px',
+        lg: '14px',
+        md: '12px',
+        sm: '8px',
+        xs: '6px',
       },
     },
   },
