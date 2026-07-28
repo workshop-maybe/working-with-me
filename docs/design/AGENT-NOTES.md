@@ -35,4 +35,4 @@ User-facing copy never says: `course`, `module`, `student`, `teacher`, `assignme
 
 Short sentences. No em-dashes. No "It's not just X — it's Y." No hedging. Person-to-person, plural voice ("post yours", "see who's working on what"), warmer than a tool landing.
 
-See `~/projects/02-areas/andamio/.claude/skills/write/writing-reference.md`.
+See the internal `writing-reference` note.

@@ -22,7 +22,7 @@ The credential is a real Andamio credential — programmatically usable by any o
 
 Spec lives in orch until James decides to hand off to agency.
 
-Target repo: `~/projects/01-projects/working-with-me/` (fresh, empty git init as of 2026-04-26).
+Target repo: `` (fresh, empty git init as of 2026-04-26).
 
 ---
 
@@ -32,7 +32,7 @@ People who would work well together can't easily find each other, and when they 
 
 This v1 ships a small platform on Andamio APIs where each user posts a single living doc — what they're working on, how they prefer to work — and engagement happens through a deliberate two-step ritual (comment + commitment), gated by the poster's approval. A successful approval issues an Andamio credential tying the two parties on-chain. Other apps can read those credentials to power discovery, vouching, and access decisions elsewhere in the Andamio ecosystem.
 
-The pattern is "Built on Andamio" — same family as `cardano-xp` and `midnight-pbl`, codified in `~/projects/02-areas/andamio/.claude/knowledge/built-on-andamio-patterns.md`. Andamio's Course primitive is repurposed as a per-user namespace; an Assignment is the user's doc; a Submission is a Commitment; an issued Credential is the connection.
+The pattern is "Built on Andamio" — same family as `cardano-xp` and `midnight-pbl`, codified in the internal `built-on-andamio-patterns` note. Andamio's Course primitive is repurposed as a per-user namespace; an Assignment is the user's doc; a Submission is a Commitment; an issued Credential is the connection.
 
 ## 2. Requirements
 
@@ -50,7 +50,7 @@ The pattern is "Built on Andamio" — same family as `cardano-xp` and `midnight-
 - P0-10: Gated resources — the owner can author a second Markdown body ("how I work — more"). It is visible only to wallets that hold an issued credential from the owner.
 - P0-11: My connections view — `/network` lists wallets the current user holds a credential with (1-degree only in v1).
 - P0-12: Andamio terminology never appears in user-facing UI. Mapping (Course → "your space", Module → "more resources", Assignment → "what I'm working on", Submission → "interest", Credential → "connection") is implementation-only.
-- P0-13: Editorial voice in all UI copy: short sentences, no hedging, no em-dashes, no AI-slop tells. Source: `~/projects/02-areas/andamio/.claude/skills/write/writing-reference.md`.
+- P0-13: Editorial voice in all UI copy: short sentences, no hedging, no em-dashes, no AI-slop tells. Source: the internal `writing-reference` note.
 
 ### P1 (should ship in v1)
 
@@ -62,7 +62,7 @@ The pattern is "Built on Andamio" — same family as `cardano-xp` and `midnight-
 
 Real file paths the implementation will create.
 
-**New files in target repo (`~/projects/01-projects/working-with-me/`):**
+**New files in target repo (``):**
 
 Stack & config:
 - `package.json` — Next.js 15, React 18, `@meshsdk/core`, `@meshsdk/react`, Tailwind, `react-markdown`, `@tanstack/react-query`, `zod`.
@@ -111,9 +111,9 @@ Library:
 - `GET  /api/v2/course/student/credentials` — visitor's held credentials (powers `/network` and the gated read check).
 
 **Reference patterns (read for guidance, do not copy code):**
-- `~/projects/02-areas/andamio/.claude/knowledge/built-on-andamio-patterns.md` — proxy + deployment patterns.
-- `~/projects/01-projects/cardano-xp/` — single-course env-var pattern (we adapt to per-user dynamic namespaces).
-- `~/projects/01-projects/midnight-pbl/` — Cloud Run + WIF GitHub Actions.
+- the internal `built-on-andamio-patterns` note — proxy + deployment patterns.
+- `$REPOS/cardano-xp/` — single-course env-var pattern (we adapt to per-user dynamic namespaces).
+- `$REPOS/midnight-pbl/` — Cloud Run + WIF GitHub Actions.
 
 ## 4. Tests
 
@@ -150,7 +150,7 @@ Library:
 
 Each AC is binary testable.
 
-- AC-1: `pnpm install && pnpm build && pnpm typecheck` all succeed on a clean clone of `~/projects/01-projects/working-with-me/`.
+- AC-1: `pnpm install && pnpm build && pnpm typecheck` all succeed on a clean clone of ``.
 - AC-2: A grep for `ANDAMIO_API_KEY` against the production client bundle (`.next/static/`) returns zero matches.
 - AC-3: All Andamio gateway calls in source originate from `app/api/gateway/*` or `app/api/auth/*` (server-side); zero direct client-side fetches to `andamio.io`.
 - AC-4: A wallet visitor can connect via Mesh SDK and obtain a JWT via the Andamio nonce + validate flow.
@@ -180,7 +180,7 @@ Each AC is binary testable.
 - Must NOT include enterprise SSO, native mobile apps, or analytics dashboards.
 - Must NOT expose Andamio-internal terminology (`course`, `module`, `SLT`, `student`, `teacher`, `assignment submission`, `credential issuance`) to users.
 - Must NOT bundle Mesh SDK or wallet/crypto deps into the SSR path.
-- Must NOT reference, import, or copy code from `~/projects/01-projects/working-with-me-platform/` (the abandoned Vite repo). Concept-mapping inspiration is captured in this spec; that repo is out of scope.
+- Must NOT reference, import, or copy code from `$REPOS/working-with-me-platform/` (the abandoned Vite repo). Concept-mapping inspiration is captured in this spec; that repo is out of scope.
 - Must NOT hardcode `gateway_url`, `network`, or any wallet identity. All env-driven or session-driven.
 - Must NOT introduce a custom credential storage layer. Credentials are real Andamio credentials, queryable through Andamio's existing endpoints.
 
