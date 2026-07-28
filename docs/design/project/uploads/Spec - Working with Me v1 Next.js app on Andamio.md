@@ -24,7 +24,7 @@ Target repo: `~/projects/01-projects/working-with-me/` (fresh, empty git init as
 
 ## 1. Problem
 
-Both AI and human collaborators struggle to align with how James actually works. The rules and philosophy that govern a productive collaboration with him exist — but scattered across the orch vault (`.claude/CLAUDE.md`, `.claude/skills/write/`, `020-areas/strategy/`), the zettelkasten (`wiki/creative/writing.md`, `wiki/andamio/`, `wiki/ideas/*`), voice memos, and codified Claude skills. There is no single artifact a collaborator can read, engage with, and become calibrated by.
+Both AI and human collaborators struggle to align with how James actually works. The rules and philosophy that govern a productive collaboration with him exist — but scattered across the orch vault (`.claude/CLAUDE.md`, `.claude/skills/write/`, an internal strategy note), the zettelkasten (`wiki/creative/writing.md`, `wiki/andamio/`, `wiki/ideas/*`), voice memos, and codified Claude skills. There is no single artifact a collaborator can read, engage with, and become calibrated by.
 
 This v1 ships James's own working-with-me brief as a single-tenant Next.js app on Andamio APIs. It proves the working-with-me pattern (read → respond → connect, mapped onto Andamio's enroll → submit → credential primitives) before any multi-tenant or monetization layer.
 
@@ -163,10 +163,10 @@ The brief's actual content — sections, manifesto copy, qualification questions
 - `.claude/CLAUDE.md` — Three Orchestrators, daily rhythm, rules, what James keeps vs delegates.
 - `.claude/skills/write/writing-reference.md` — voice rules.
 - `.claude/knowledge/synthesis-patterns/feedback_no_self_congratulation.md` — anti-patterns in copy.
-- `020-areas/strategy/2026-03-21-enterprise-launch-amendment.md` — source-leadership thinking, money flow.
-- `020-areas/CONTEXT.md` — current chain-of-work framing.
+- the 2026-03-21 enterprise-launch amendment (internal) — source-leadership thinking, money flow.
+- the internal context note — current chain-of-work framing.
 
-**From jz (`/Users/james/projects/james-zettelkasten/`):**
+**From the personal knowledge base (internal):**
 - `wiki/creative/writing.md` — pace layering, "no AI slop walls".
 - `wiki/andamio/techstars-experience.md` — "treat people as ends, not means".
 - `wiki/ideas/requesting.md` — productive requesting (who, by when).
