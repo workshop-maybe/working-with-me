@@ -18,7 +18,7 @@ tags:
 
 Draft spec in agency's 7-section format. Lives in orch until James decides to hand off to agency. Single-tenant v1: ships James's own brief on Andamio APIs; multi-tenant + monetization layers are explicitly out of scope.
 
-Target repo: `~/projects/01-projects/working-with-me/` (fresh, empty git init as of 2026-04-26).
+Target repo: `` (fresh, empty git init as of 2026-04-26).
 
 ---
 
@@ -28,20 +28,20 @@ Both AI and human collaborators struggle to align with how James actually works.
 
 This v1 ships James's own working-with-me brief as a single-tenant Next.js app on Andamio APIs. It proves the working-with-me pattern (read → respond → connect, mapped onto Andamio's enroll → submit → credential primitives) before any multi-tenant or monetization layer.
 
-The pattern is "Built on Andamio" — the same shape as `cardano-xp` and `midnight-pbl`, codified in `~/projects/02-areas/andamio/.claude/knowledge/built-on-andamio-patterns.md`.
+The pattern is "Built on Andamio" — the same shape as `cardano-xp` and `midnight-pbl`, codified in the internal `built-on-andamio-patterns` note.
 
 ## 2. Requirements
 
 ### P0 (must ship in v1)
 
-- P0-1: Next.js 15 + TypeScript + Tailwind app at `~/projects/01-projects/working-with-me/`. Mesh SDK in client-only components.
+- P0-1: Next.js 15 + TypeScript + Tailwind app at ``. Mesh SDK in client-only components.
 - P0-2: All Andamio API calls go through a server-side proxy route that injects `X-API-Key`. Key never reaches the client bundle.
 - P0-3: Brief content (sections + qualification questions) is fetched from a single Andamio course identified by env-var `course_id` (cardano-xp single-tenant pattern). Content is NOT baked into source.
 - P0-4: Anonymous read path — visitor without a wallet can read the full brief.
 - P0-5: Wallet read+respond path — visitor can connect a Cardano wallet via Mesh SDK, answer section-level qualification questions, submit responses.
 - P0-6: Successful submission triggers credential issuance via the Andamio gateway (the "connection badge" — a real on-chain mark of a calibrated collaborator).
 - P0-7: Andamio terminology never appears in the user-facing UI. The mapping (course → "the brief", module → "section", SLT → "qualification question", credential → "connection badge") is hidden inside the implementation.
-- P0-8: Editorial voice in all UI copy: short sentences, no hedging, no em-dashes, no AI-slop tells (no "let's dive in", no marketing triplets). Source of truth: `~/projects/02-areas/andamio/.claude/skills/write/writing-reference.md` + `.claude/knowledge/synthesis-patterns/feedback_no_self_congratulation.md`.
+- P0-8: Editorial voice in all UI copy: short sentences, no hedging, no em-dashes, no AI-slop tells (no "let's dive in", no marketing triplets). Source of truth: the internal `writing-reference` note + `.claude/knowledge/synthesis-patterns/feedback_no_self_congratulation.md`.
 
 ### P1 (should ship in v1)
 
@@ -53,7 +53,7 @@ The pattern is "Built on Andamio" — the same shape as `cardano-xp` and `midnig
 
 Real file paths the implementation will create or modify.
 
-**New files in target repo (`~/projects/01-projects/working-with-me/`):**
+**New files in target repo (``):**
 - `package.json` — Next.js 15, React 18, Mesh SDK (`@meshsdk/core`, `@meshsdk/react`), Tailwind, generated gateway types.
 - `next.config.mjs` — webpack config to keep wallet/crypto deps out of SSR bundle.
 - `tailwind.config.ts`, `postcss.config.mjs`.
@@ -78,9 +78,9 @@ Real file paths the implementation will create or modify.
 - `POST /api/v2/course/credential/issue` — issue connection badge.
 
 **Reference patterns (read, do not copy):**
-- `~/projects/02-areas/andamio/.claude/knowledge/built-on-andamio-patterns.md` — common API integration + deployment patterns.
-- `~/projects/01-projects/cardano-xp/` — single-course env-var pattern.
-- `~/projects/01-projects/midnight-pbl/` — Cloud Run + WIF GitHub Actions pattern.
+- the internal `built-on-andamio-patterns` note — common API integration + deployment patterns.
+- `$REPOS/cardano-xp/` — single-course env-var pattern.
+- `$REPOS/midnight-pbl/` — Cloud Run + WIF GitHub Actions pattern.
 
 ## 4. Tests
 
@@ -112,7 +112,7 @@ Real file paths the implementation will create or modify.
 
 Each AC is binary testable.
 
-- AC-1: `pnpm install && pnpm build && pnpm typecheck` all succeed on a clean clone of `~/projects/01-projects/working-with-me/`.
+- AC-1: `pnpm install && pnpm build && pnpm typecheck` all succeed on a clean clone of ``.
 - AC-2: Anonymous visit to `/` renders brief sections fetched from Andamio course identified by `ANDAMIO_COURSE_ID`.
 - AC-3: A grep for `ANDAMIO_API_KEY` against the production client bundle (`.next/static/`) returns zero matches.
 - AC-4: All Andamio gateway calls in source originate from `app/api/gateway/*` or `app/api/auth/*` (server-side); zero calls from `components/` or other client paths.
@@ -133,7 +133,7 @@ Each AC is binary testable.
 - Must NOT include real-time collaboration, WebSockets, or chat.
 - Must NOT expose Andamio-internal terminology to users (`course`, `module`, `SLT`, `student`, `teacher`, `credential issuance`).
 - Must NOT bundle Mesh SDK or other wallet/crypto code into the SSR path.
-- Must NOT reference, import, or copy code from `~/projects/01-projects/working-with-me-platform/` (the abandoned Vite repo). Concept-mapping inspiration is captured here in this spec; the prior repo is out of scope going forward.
+- Must NOT reference, import, or copy code from `$REPOS/working-with-me-platform/` (the abandoned Vite repo). Concept-mapping inspiration is captured here in this spec; the prior repo is out of scope going forward.
 - Must NOT bake brief content into source. All section content + qualification questions live in the Andamio course identified by env var.
 - Must NOT add enterprise SSO, native mobile apps, or analytics dashboards in v1.
 - Must NOT use Vite. Stack is fixed: Next.js 15 with the App Router.
@@ -159,7 +159,7 @@ The principle, from `built-on-andamio-patterns.md`: the education flow (enroll �
 
 The brief's actual content — sections, manifesto copy, qualification questions — gets authored as Andamio course content in a separate step (likely via the Andamio CLI). The research that surfaces what to write lives in:
 
-**From orch (`/Users/james/projects/02-areas/andamio/`):**
+**From orch (the private orchestration vault):**
 - `.claude/CLAUDE.md` — Three Orchestrators, daily rhythm, rules, what James keeps vs delegates.
 - `.claude/skills/write/writing-reference.md` — voice rules.
 - `.claude/knowledge/synthesis-patterns/feedback_no_self_congratulation.md` — anti-patterns in copy.
